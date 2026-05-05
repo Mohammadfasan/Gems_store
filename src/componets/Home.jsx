@@ -1,17 +1,8 @@
 import React, { useState, useRef } from 'react';
-import Ring1 from "../assets/Rings/Ring3.jpg";
-import Ring2 from "../assets/Rings/Ring2.jpg";
-import Buy1 from "../assets/Buyer/buy1.jpg";
-import Buy2 from "../assets/Buyer/buy2.jpg";
-import Gem1 from "../assets/Gems/gem1.jpg"
-import Gem2 from "../assets/Gems/gem2.jpg"
-import Gem3 from "../assets/Gems/gem3.jpg"
-import Gem4 from "../assets/Gems/gem4.png"
-import Gem5 from "../assets/Gems/gem5.png"
 
 const Home = () => {
   // Single background image (Google hosted - luxury jewelry background)
-  const backgroundImage = "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop";
+  const backgroundImage = "https://placehold.co/1920x1080/1a1a2e/d4af37?text=Luxury+Jewelry+Background";
 
   // Hero content
   const heroContent = {
@@ -22,73 +13,85 @@ const Home = () => {
     ctaLink: "/rings"
   };
 
-  // Featured Products - Clean and Simple (Sri Lankan Products)
+  // Featured Products - Replace these with your Google image URLs
   const featuredProducts = [
     {
       id: 1,
       name: "GEMLOX RADIANCE",
       price: "LKR 85,000",
-      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop"
+      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+RADIANCE"
     },
     {
       id: 2,
       name: "GEMLOX EMBER",
       price: "LKR 95,000",
-      image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500&h=600&fit=crop"
+      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+EMBER"
     },
     {
       id: 3,
       name: "GEMLOX DAWN",
       price: "LKR 120,000",
-      image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&h=600&fit=crop"
+      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+DAWN"
     },
     {
       id: 4,
       name: "GEMLOX IVY",
       price: "LKR 65,000",
-      image: "https://images.unsplash.com/photo-1616683693504-8b2c9f3a2c3e?w=500&h=600&fit=crop"
+      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+IVY"
     },
     {
       id: 5,
       name: "GEMLOX BLISS",
       price: "LKR 150,000",
-      image: "https://images.unsplash.com/photo-1617038260894-0a6fdaaad5e9?w=500&h=600&fit=crop"
+      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+BLISS"
     }
   ];
 
-  // Gemstones Collection using imported images
+  // Gemstones Collection - Replace these with your Google image URLs
   const gemstones = [
     {
       id: 1,
       name: "CEYLON SAPPHIRE",
       price: "LKR 250,000",
-      image: Gem1
+      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Ceylon+Sapphire"
     },
     {
       id: 2,
       name: "PADPARADSCHA",
       price: "LKR 450,000",
-      image: Gem2
+      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Padparadscha"
     },
     {
       id: 3,
       name: "BLUE STAR SAPPHIRE",
       price: "LKR 350,000",
-      image: Gem3
+      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Blue+Star+Sapphire"
     },
     {
       id: 4,
       name: "CEYLON RUBY",
       price: "LKR 180,000",
-      image: Gem4
+      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Ceylon+Ruby"
     },
     {
       id: 5,
       name: "YELLOW SAPPHIRE",
       price: "LKR 95,000",
-      image: Gem5
+      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Yellow+Sapphire"
     }
   ];
+
+  // Ring images for Engagement and Wedding sections - Replace with your Google image URLs
+  const ringImages = {
+    engagement: "https://placehold.co/800x600/1a1a2e/d4af37?text=Engagement+Rings",
+    wedding: "https://placehold.co/800x600/1a1a2e/d4af37?text=Wedding+Rings"
+  };
+
+  // Buyer section images - Replace with your Google image URLs
+  const buyerImages = {
+    jewelry: "https://placehold.co/800x600/1a1a2e/d4af37?text=Jewelry+Collection",
+    gems: "https://placehold.co/800x600/1a1a2e/d4af37?text=Gemstones"
+  };
 
   return (
     <>
@@ -174,9 +177,6 @@ const Home = () => {
                     src={product.image}
                     alt={product.name}
                     className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      e.target.src = "https://placehold.co/500x500/f5f5f5/d4af37?text=" + product.name.replace(/ /g, '+');
-                    }}
                   />
                 </div>
                 <div className="text-center mt-4">
@@ -201,7 +201,7 @@ const Home = () => {
             <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <div className="relative h-80 overflow-hidden">
                 <img 
-                  src={Ring1}
+                  src={ringImages.engagement}
                   alt="Engagement Rings Collection" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -239,7 +239,7 @@ const Home = () => {
             <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <div className="relative h-80 overflow-hidden">
                 <img 
-                  src={Ring2}
+                  src={ringImages.wedding}
                   alt="Wedding Rings Collection" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -304,9 +304,6 @@ const Home = () => {
                       src={gem.image}
                       alt={gem.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      onError={(e) => {
-                        e.target.src = "https://placehold.co/500x500/f5f5f5/d4af37?text=" + gem.name.replace(/ /g, '+');
-                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
@@ -361,7 +358,7 @@ const Home = () => {
             <div className="group relative overflow-hidden rounded-2xl min-h-[500px] shadow-xl hover:shadow-2xl transition-all duration-500">
               <div className="absolute inset-0">
                 <img 
-                  src={Buy1}
+                  src={buyerImages.jewelry}
                   alt="Jewelry buyers collection"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -407,7 +404,7 @@ const Home = () => {
             <div className="group relative overflow-hidden rounded-2xl min-h-[500px] shadow-xl hover:shadow-2xl transition-all duration-500">
               <div className="absolute inset-0">
                 <img 
-                  src={Buy2}
+                  src={buyerImages.gems}
                   alt="Gem buyers - precious stones"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />

@@ -108,67 +108,123 @@ const Jewelry = () => {
     'pearls': 'Pearls'
   };
 
+  // Function to get Google image URL - REPLACE THESE WITH YOUR ACTUAL GOOGLE IMAGE LINKS
+  const getProductImage = (productName) => {
+    // Google Image Placeholders - Replace these URLs with your actual Google image links
+    const imageMap = {
+      'Solitaire Diamond Ring': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R1',
+      'Halo Diamond Ring': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R2',
+      'Three Stone Ring': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R3',
+      'Vintage Sapphire Ring': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R4',
+      'Classic Wedding Band': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R5',
+      'Rose Gold Wedding Band': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R6',
+      'Eternity Diamond Band': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R7',
+      "Men's Tungsten Band": 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R8',
+      "Men's Gold Band": 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R9',
+      'Fashion Cocktail Ring': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R10',
+      'Promise Knot Ring': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R11',
+      'Infinity Promise Ring': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_R12',
+      'Diamond Pendant Necklace': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_N1',
+      'Gold Chain Necklace': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_N2',
+      'Pearl Pendant Necklace': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_N3',
+      'Layered Chain Necklace': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_N4',
+      'Emerald Pendant': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_N5',
+      'Choker Necklace': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_N6',
+      'Statement Necklace': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_N7',
+      'Locket Necklace': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_N8',
+      'Diamond Stud Earrings': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_E1',
+      'Gold Hoop Earrings': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_E2',
+      'Chandelier Earrings': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_E3',
+      'Drop Earrings': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_E4',
+      'Dangle Earrings': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_E5',
+      'Cluster Earrings': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_E6',
+      'Ruby Stud Earrings': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_E7',
+      'Small Hoop Earrings': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_E8',
+      'Tennis Bracelet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_B1',
+      'Gold Bangle Set': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_B2',
+      'Charm Bracelet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_B3',
+      'Cuff Bracelet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_B4',
+      'Beaded Bracelet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_B5',
+      'Chain Bracelet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_B6',
+      'Diamond Tennis Bracelet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_B7',
+      'Bangle Bracelet Set': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_B8',
+      'Gold Anklet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_A1',
+      'Gemstone Anklet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_A2',
+      'Silver Anklet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_A3',
+      'Beaded Anklet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_A4',
+      'Charm Anklet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_A5',
+      'Temple Anklet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_A6',
+      'Complete Bridal Set': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_S1',
+      'Kundan Bridal Set': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_S2',
+      'Temple Bridal Set': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_S3',
+      'Necklace & Earring Set': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_S4',
+      'Traditional Bridal Set': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_S5',
+      'Wedding Collection Set': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_S6',
+    };
+    return imageMap[productName] || 'https://placehold.co/400x400/f5f5f5/d4af37?text=Jewelry';
+  };
+
   // Complete product database for ALL categories
   const allProducts = [
     // ========== RINGS - All types (12 products) ==========
-    { id: 1, name: "Solitaire Diamond Ring", category: "rings", subCategory: "engagement", price: 2999, originalPrice: 3999, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 128, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400", isNew: true, isBestseller: true, discount: 25 },
-    { id: 2, name: "Halo Diamond Ring", category: "rings", subCategory: "engagement", price: 4599, originalPrice: 5899, metal: "White Gold", style: "Halo", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 94, image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=400", isNew: true, discount: 22 },
-    { id: 3, name: "Three Stone Ring", category: "rings", subCategory: "engagement", price: 3899, metal: "Rose Gold", style: "Three Stone", shape: "Princess", stoneType: "Diamond", gender: "Women", rating: 4.8, reviews: 156, image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400", isBestseller: true },
-    { id: 4, name: "Vintage Sapphire Ring", category: "rings", subCategory: "engagement", price: 2899, originalPrice: 3799, metal: "Yellow Gold", style: "Vintage", shape: "Oval", stoneType: "Sapphire", gender: "Women", rating: 4.7, reviews: 87, image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=400", discount: 24 },
-    { id: 5, name: "Classic Wedding Band", category: "rings", subCategory: "wedding", price: 1299, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "None", gender: "Unisex", rating: 4.9, reviews: 234, image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400", isBestseller: true },
-    { id: 6, name: "Rose Gold Wedding Band", category: "rings", subCategory: "wedding", price: 999, metal: "Rose Gold", style: "Classic", shape: "Round", stoneType: "None", gender: "Women", rating: 4.8, reviews: 167, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400", isNew: true },
-    { id: 7, name: "Eternity Diamond Band", category: "rings", subCategory: "eternity", price: 3299, originalPrice: 4299, metal: "White Gold", style: "Eternity", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.8, reviews: 67, image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=400", discount: 23 },
-    { id: 8, name: "Men's Tungsten Band", category: "rings", subCategory: "mens-wedding-bands", price: 899, metal: "Tungsten", style: "Modern", shape: "Round", stoneType: "None", gender: "Men", rating: 4.8, reviews: 189, image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400", isNew: true },
-    { id: 9, name: "Men's Gold Band", category: "rings", subCategory: "mens-wedding-bands", price: 1599, metal: "Yellow Gold", style: "Classic", shape: "Round", stoneType: "None", gender: "Men", rating: 4.7, reviews: 112, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400", isBestseller: true },
-    { id: 10, name: "Fashion Cocktail Ring", category: "rings", subCategory: "fashion", price: 899, metal: "Rose Gold", style: "Modern", shape: "Oval", stoneType: "Sapphire", gender: "Women", rating: 4.6, reviews: 78, image: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=400", isNew: true },
-    { id: 11, name: "Promise Knot Ring", category: "rings", subCategory: "promise", price: 599, metal: "White Gold", style: "Modern", shape: "Round", stoneType: "None", gender: "Women", rating: 4.7, reviews: 203, image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=400", isBestseller: true },
-    { id: 12, name: "Infinity Promise Ring", category: "rings", subCategory: "promise", price: 799, metal: "Rose Gold", style: "Modern", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.8, reviews: 145, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400", isNew: true },
+    { id: 1, name: "Solitaire Diamond Ring", category: "rings", subCategory: "engagement", price: 2999, originalPrice: 3999, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 128, image: getProductImage("Solitaire Diamond Ring"), isNew: true, isBestseller: true, discount: 25 },
+    { id: 2, name: "Halo Diamond Ring", category: "rings", subCategory: "engagement", price: 4599, originalPrice: 5899, metal: "White Gold", style: "Halo", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 94, image: getProductImage("Halo Diamond Ring"), isNew: true, discount: 22 },
+    { id: 3, name: "Three Stone Ring", category: "rings", subCategory: "engagement", price: 3899, metal: "Rose Gold", style: "Three Stone", shape: "Princess", stoneType: "Diamond", gender: "Women", rating: 4.8, reviews: 156, image: getProductImage("Three Stone Ring"), isBestseller: true },
+    { id: 4, name: "Vintage Sapphire Ring", category: "rings", subCategory: "engagement", price: 2899, originalPrice: 3799, metal: "Yellow Gold", style: "Vintage", shape: "Oval", stoneType: "Sapphire", gender: "Women", rating: 4.7, reviews: 87, image: getProductImage("Vintage Sapphire Ring"), discount: 24 },
+    { id: 5, name: "Classic Wedding Band", category: "rings", subCategory: "wedding", price: 1299, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "None", gender: "Unisex", rating: 4.9, reviews: 234, image: getProductImage("Classic Wedding Band"), isBestseller: true },
+    { id: 6, name: "Rose Gold Wedding Band", category: "rings", subCategory: "wedding", price: 999, metal: "Rose Gold", style: "Classic", shape: "Round", stoneType: "None", gender: "Women", rating: 4.8, reviews: 167, image: getProductImage("Rose Gold Wedding Band"), isNew: true },
+    { id: 7, name: "Eternity Diamond Band", category: "rings", subCategory: "eternity", price: 3299, originalPrice: 4299, metal: "White Gold", style: "Eternity", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.8, reviews: 67, image: getProductImage("Eternity Diamond Band"), discount: 23 },
+    { id: 8, name: "Men's Tungsten Band", category: "rings", subCategory: "mens-wedding-bands", price: 899, metal: "Tungsten", style: "Modern", shape: "Round", stoneType: "None", gender: "Men", rating: 4.8, reviews: 189, image: getProductImage("Men's Tungsten Band"), isNew: true },
+    { id: 9, name: "Men's Gold Band", category: "rings", subCategory: "mens-wedding-bands", price: 1599, metal: "Yellow Gold", style: "Classic", shape: "Round", stoneType: "None", gender: "Men", rating: 4.7, reviews: 112, image: getProductImage("Men's Gold Band"), isBestseller: true },
+    { id: 10, name: "Fashion Cocktail Ring", category: "rings", subCategory: "fashion", price: 899, metal: "Rose Gold", style: "Modern", shape: "Oval", stoneType: "Sapphire", gender: "Women", rating: 4.6, reviews: 78, image: getProductImage("Fashion Cocktail Ring"), isNew: true },
+    { id: 11, name: "Promise Knot Ring", category: "rings", subCategory: "promise", price: 599, metal: "White Gold", style: "Modern", shape: "Round", stoneType: "None", gender: "Women", rating: 4.7, reviews: 203, image: getProductImage("Promise Knot Ring"), isBestseller: true },
+    { id: 12, name: "Infinity Promise Ring", category: "rings", subCategory: "promise", price: 799, metal: "Rose Gold", style: "Modern", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.8, reviews: 145, image: getProductImage("Infinity Promise Ring"), isNew: true },
     
     // ========== NECKLACES - All types (8 products) ==========
-    { id: 13, name: "Diamond Pendant Necklace", category: "necklaces", subCategory: "pendant", price: 2499, originalPrice: 3299, metal: "White Gold", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 156, image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400", isBestseller: true, discount: 24 },
-    { id: 14, name: "Gold Chain Necklace", category: "necklaces", subCategory: "chain", price: 599, metal: "Yellow Gold", style: "Modern", shape: "None", stoneType: "None", gender: "Unisex", rating: 4.7, reviews: 234, image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400", isNew: true },
-    { id: 15, name: "Pearl Pendant Necklace", category: "necklaces", subCategory: "pendant", price: 1899, metal: "White Gold", style: "Classic", shape: "Round", stoneType: "Pearl", gender: "Women", rating: 4.8, reviews: 89, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", isBestseller: true },
-    { id: 16, name: "Layered Chain Necklace", category: "necklaces", subCategory: "layered", price: 899, metal: "Yellow Gold", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.6, reviews: 67, image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400", isNew: true },
-    { id: 17, name: "Emerald Pendant", category: "necklaces", subCategory: "pendant", price: 1599, metal: "Platinum", style: "Classic", shape: "Oval", stoneType: "Emerald", gender: "Women", rating: 4.7, reviews: 78, image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400", isBestseller: true },
-    { id: 18, name: "Choker Necklace", category: "necklaces", subCategory: "chokers", price: 799, metal: "Rose Gold", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 123, image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400", isNew: true },
-    { id: 19, name: "Statement Necklace", category: "necklaces", subCategory: "statement", price: 1299, metal: "Yellow Gold", style: "Vintage", shape: "None", stoneType: "Sapphire", gender: "Women", rating: 4.8, reviews: 56, image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400", isBestseller: true },
-    { id: 20, name: "Locket Necklace", category: "necklaces", subCategory: "lockets", price: 399, metal: "Silver", style: "Classic", shape: "Round", stoneType: "None", gender: "Women", rating: 4.6, reviews: 89, image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400", isNew: true },
+    { id: 13, name: "Diamond Pendant Necklace", category: "necklaces", subCategory: "pendant", price: 2499, originalPrice: 3299, metal: "White Gold", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 156, image: getProductImage("Diamond Pendant Necklace"), isBestseller: true, discount: 24 },
+    { id: 14, name: "Gold Chain Necklace", category: "necklaces", subCategory: "chain", price: 599, metal: "Yellow Gold", style: "Modern", shape: "None", stoneType: "None", gender: "Unisex", rating: 4.7, reviews: 234, image: getProductImage("Gold Chain Necklace"), isNew: true },
+    { id: 15, name: "Pearl Pendant Necklace", category: "necklaces", subCategory: "pendant", price: 1899, metal: "White Gold", style: "Classic", shape: "Round", stoneType: "Pearl", gender: "Women", rating: 4.8, reviews: 89, image: getProductImage("Pearl Pendant Necklace"), isBestseller: true },
+    { id: 16, name: "Layered Chain Necklace", category: "necklaces", subCategory: "layered", price: 899, metal: "Yellow Gold", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.6, reviews: 67, image: getProductImage("Layered Chain Necklace"), isNew: true },
+    { id: 17, name: "Emerald Pendant", category: "necklaces", subCategory: "pendant", price: 1599, metal: "Platinum", style: "Classic", shape: "Oval", stoneType: "Emerald", gender: "Women", rating: 4.7, reviews: 78, image: getProductImage("Emerald Pendant"), isBestseller: true },
+    { id: 18, name: "Choker Necklace", category: "necklaces", subCategory: "chokers", price: 799, metal: "Rose Gold", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 123, image: getProductImage("Choker Necklace"), isNew: true },
+    { id: 19, name: "Statement Necklace", category: "necklaces", subCategory: "statement", price: 1299, metal: "Yellow Gold", style: "Vintage", shape: "None", stoneType: "Sapphire", gender: "Women", rating: 4.8, reviews: 56, image: getProductImage("Statement Necklace"), isBestseller: true },
+    { id: 20, name: "Locket Necklace", category: "necklaces", subCategory: "lockets", price: 399, metal: "Silver", style: "Classic", shape: "Round", stoneType: "None", gender: "Women", rating: 4.6, reviews: 89, image: getProductImage("Locket Necklace"), isNew: true },
     
     // ========== EARRINGS - All types (8 products) ==========
-    { id: 21, name: "Diamond Stud Earrings", category: "earrings", subCategory: "stud", price: 1899, originalPrice: 2499, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 203, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", isBestseller: true, discount: 24 },
-    { id: 22, name: "Gold Hoop Earrings", category: "earrings", subCategory: "hoop", price: 799, metal: "Yellow Gold", style: "Modern", shape: "Round", stoneType: "None", gender: "Women", rating: 4.8, reviews: 167, image: "https://images.unsplash.com/photo-1629223784092-1b5f3a2b1a2b?w=400", isNew: true },
-    { id: 23, name: "Chandelier Earrings", category: "earrings", subCategory: "chandelier", price: 1299, metal: "Rose Gold", style: "Vintage", shape: "Drop", stoneType: "Sapphire", gender: "Women", rating: 4.7, reviews: 98, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", isBestseller: true },
-    { id: 24, name: "Drop Earrings", category: "earrings", subCategory: "drop", price: 999, metal: "White Gold", style: "Classic", shape: "Drop", stoneType: "Pearl", gender: "Women", rating: 4.6, reviews: 112, image: "https://images.unsplash.com/photo-1629223784092-1b5f3a2b1a2b?w=400", isNew: true },
-    { id: 25, name: "Dangle Earrings", category: "earrings", subCategory: "dangle", price: 699, metal: "Silver", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 134, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", isBestseller: true },
-    { id: 26, name: "Cluster Earrings", category: "earrings", subCategory: "cluster", price: 1499, metal: "White Gold", style: "Modern", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.8, reviews: 67, image: "https://images.unsplash.com/photo-1629223784092-1b5f3a2b1a2b?w=400", isNew: true },
-    { id: 27, name: "Ruby Stud Earrings", category: "earrings", subCategory: "stud", price: 899, metal: "Yellow Gold", style: "Classic", shape: "Round", stoneType: "Ruby", gender: "Women", rating: 4.7, reviews: 89, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", isBestseller: true },
-    { id: 28, name: "Small Hoop Earrings", category: "earrings", subCategory: "hoop", price: 399, metal: "Rose Gold", style: "Modern", shape: "Round", stoneType: "None", gender: "Women", rating: 4.6, reviews: 156, image: "https://images.unsplash.com/photo-1629223784092-1b5f3a2b1a2b?w=400", isNew: true },
+    { id: 21, name: "Diamond Stud Earrings", category: "earrings", subCategory: "stud", price: 1899, originalPrice: 2499, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 203, image: getProductImage("Diamond Stud Earrings"), isBestseller: true, discount: 24 },
+    { id: 22, name: "Gold Hoop Earrings", category: "earrings", subCategory: "hoop", price: 799, metal: "Yellow Gold", style: "Modern", shape: "Round", stoneType: "None", gender: "Women", rating: 4.8, reviews: 167, image: getProductImage("Gold Hoop Earrings"), isNew: true },
+    { id: 23, name: "Chandelier Earrings", category: "earrings", subCategory: "chandelier", price: 1299, metal: "Rose Gold", style: "Vintage", shape: "Drop", stoneType: "Sapphire", gender: "Women", rating: 4.7, reviews: 98, image: getProductImage("Chandelier Earrings"), isBestseller: true },
+    { id: 24, name: "Drop Earrings", category: "earrings", subCategory: "drop", price: 999, metal: "White Gold", style: "Classic", shape: "Drop", stoneType: "Pearl", gender: "Women", rating: 4.6, reviews: 112, image: getProductImage("Drop Earrings"), isNew: true },
+    { id: 25, name: "Dangle Earrings", category: "earrings", subCategory: "dangle", price: 699, metal: "Silver", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 134, image: getProductImage("Dangle Earrings"), isBestseller: true },
+    { id: 26, name: "Cluster Earrings", category: "earrings", subCategory: "cluster", price: 1499, metal: "White Gold", style: "Modern", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.8, reviews: 67, image: getProductImage("Cluster Earrings"), isNew: true },
+    { id: 27, name: "Ruby Stud Earrings", category: "earrings", subCategory: "stud", price: 899, metal: "Yellow Gold", style: "Classic", shape: "Round", stoneType: "Ruby", gender: "Women", rating: 4.7, reviews: 89, image: getProductImage("Ruby Stud Earrings"), isBestseller: true },
+    { id: 28, name: "Small Hoop Earrings", category: "earrings", subCategory: "hoop", price: 399, metal: "Rose Gold", style: "Modern", shape: "Round", stoneType: "None", gender: "Women", rating: 4.6, reviews: 156, image: getProductImage("Small Hoop Earrings"), isNew: true },
     
     // ========== BRACELETS - All types (8 products) ==========
-    { id: 29, name: "Tennis Bracelet", category: "bracelets", subCategory: "tennis", price: 3999, originalPrice: 5499, metal: "White Gold", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 89, image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400", isBestseller: true, discount: 27 },
-    { id: 30, name: "Gold Bangle Set", category: "bracelets", subCategory: "gold-bangles", price: 1299, metal: "Yellow Gold", style: "Traditional", shape: "Round", stoneType: "None", gender: "Women", rating: 4.7, reviews: 145, image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400", isNew: true },
-    { id: 31, name: "Charm Bracelet", category: "bracelets", subCategory: "charm", price: 699, metal: "Silver", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.6, reviews: 178, image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400", isBestseller: true },
-    { id: 32, name: "Cuff Bracelet", category: "bracelets", subCategory: "cuff", price: 899, metal: "Rose Gold", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 67, image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400", isNew: true },
-    { id: 33, name: "Beaded Bracelet", category: "bracelets", subCategory: "beaded", price: 299, metal: "Silver", style: "Bohemian", shape: "Round", stoneType: "Semi-precious", gender: "Women", rating: 4.4, reviews: 234, image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400", isBestseller: true },
-    { id: 34, name: "Chain Bracelet", category: "bracelets", subCategory: "chain", price: 499, metal: "White Gold", style: "Classic", shape: "None", stoneType: "None", gender: "Unisex", rating: 4.6, reviews: 123, image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400", isNew: true },
-    { id: 35, name: "Diamond Tennis Bracelet", category: "bracelets", subCategory: "tennis", price: 5999, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 5.0, reviews: 45, image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400", isBestseller: true },
-    { id: 36, name: "Bangle Bracelet Set", category: "bracelets", subCategory: "gold-bangles", price: 899, metal: "Rose Gold", style: "Traditional", shape: "Round", stoneType: "None", gender: "Women", rating: 4.7, reviews: 89, image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400", isNew: true },
+    { id: 29, name: "Tennis Bracelet", category: "bracelets", subCategory: "tennis", price: 3999, originalPrice: 5499, metal: "White Gold", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.9, reviews: 89, image: getProductImage("Tennis Bracelet"), isBestseller: true, discount: 27 },
+    { id: 30, name: "Gold Bangle Set", category: "bracelets", subCategory: "gold-bangles", price: 1299, metal: "Yellow Gold", style: "Traditional", shape: "Round", stoneType: "None", gender: "Women", rating: 4.7, reviews: 145, image: getProductImage("Gold Bangle Set"), isNew: true },
+    { id: 31, name: "Charm Bracelet", category: "bracelets", subCategory: "charm", price: 699, metal: "Silver", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.6, reviews: 178, image: getProductImage("Charm Bracelet"), isBestseller: true },
+    { id: 32, name: "Cuff Bracelet", category: "bracelets", subCategory: "cuff", price: 899, metal: "Rose Gold", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 67, image: getProductImage("Cuff Bracelet"), isNew: true },
+    { id: 33, name: "Beaded Bracelet", category: "bracelets", subCategory: "beaded", price: 299, metal: "Silver", style: "Bohemian", shape: "Round", stoneType: "Semi-precious", gender: "Women", rating: 4.4, reviews: 234, image: getProductImage("Beaded Bracelet"), isBestseller: true },
+    { id: 34, name: "Chain Bracelet", category: "bracelets", subCategory: "chain", price: 499, metal: "White Gold", style: "Classic", shape: "None", stoneType: "None", gender: "Unisex", rating: 4.6, reviews: 123, image: getProductImage("Chain Bracelet"), isNew: true },
+    { id: 35, name: "Diamond Tennis Bracelet", category: "bracelets", subCategory: "tennis", price: 5999, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 5.0, reviews: 45, image: getProductImage("Diamond Tennis Bracelet"), isBestseller: true },
+    { id: 36, name: "Bangle Bracelet Set", category: "bracelets", subCategory: "gold-bangles", price: 899, metal: "Rose Gold", style: "Traditional", shape: "Round", stoneType: "None", gender: "Women", rating: 4.7, reviews: 89, image: getProductImage("Bangle Bracelet Set"), isNew: true },
     
     // ========== ANKLETS - All types (6 products) ==========
-    { id: 37, name: "Gold Anklet", category: "anklets", subCategory: "gold", price: 399, metal: "Yellow Gold", style: "Classic", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 67, image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400", isNew: true },
-    { id: 38, name: "Gemstone Anklet", category: "anklets", subCategory: "gemstone", price: 599, metal: "Silver", style: "Modern", shape: "Round", stoneType: "Sapphire", gender: "Women", rating: 4.6, reviews: 45, image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400", isBestseller: true },
-    { id: 39, name: "Silver Anklet", category: "anklets", subCategory: "silver", price: 299, metal: "Silver", style: "Classic", shape: "None", stoneType: "None", gender: "Women", rating: 4.4, reviews: 89, image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400", isNew: true },
-    { id: 40, name: "Beaded Anklet", category: "anklets", subCategory: "beaded", price: 199, metal: "None", style: "Bohemian", shape: "Round", stoneType: "Semi-precious", gender: "Women", rating: 4.3, reviews: 156, image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400", isBestseller: true },
-    { id: 41, name: "Charm Anklet", category: "anklets", subCategory: "charm", price: 249, metal: "Silver", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 78, image: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=400", isNew: true },
-    { id: 42, name: "Temple Anklet", category: "anklets", subCategory: "temple", price: 449, metal: "Yellow Gold", style: "Traditional", shape: "None", stoneType: "None", gender: "Women", rating: 4.7, reviews: 34, image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400", isBestseller: true },
+    { id: 37, name: "Gold Anklet", category: "anklets", subCategory: "gold", price: 399, metal: "Yellow Gold", style: "Classic", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 67, image: getProductImage("Gold Anklet"), isNew: true },
+    { id: 38, name: "Gemstone Anklet", category: "anklets", subCategory: "gemstone", price: 599, metal: "Silver", style: "Modern", shape: "Round", stoneType: "Sapphire", gender: "Women", rating: 4.6, reviews: 45, image: getProductImage("Gemstone Anklet"), isBestseller: true },
+    { id: 39, name: "Silver Anklet", category: "anklets", subCategory: "silver", price: 299, metal: "Silver", style: "Classic", shape: "None", stoneType: "None", gender: "Women", rating: 4.4, reviews: 89, image: getProductImage("Silver Anklet"), isNew: true },
+    { id: 40, name: "Beaded Anklet", category: "anklets", subCategory: "beaded", price: 199, metal: "None", style: "Bohemian", shape: "Round", stoneType: "Semi-precious", gender: "Women", rating: 4.3, reviews: 156, image: getProductImage("Beaded Anklet"), isBestseller: true },
+    { id: 41, name: "Charm Anklet", category: "anklets", subCategory: "charm", price: 249, metal: "Silver", style: "Modern", shape: "None", stoneType: "None", gender: "Women", rating: 4.5, reviews: 78, image: getProductImage("Charm Anklet"), isNew: true },
+    { id: 42, name: "Temple Anklet", category: "anklets", subCategory: "temple", price: 449, metal: "Yellow Gold", style: "Traditional", shape: "None", stoneType: "None", gender: "Women", rating: 4.7, reviews: 34, image: getProductImage("Temple Anklet"), isBestseller: true },
     
     // ========== BRIDAL SETS - All types (6 products) ==========
-    { id: 43, name: "Complete Bridal Set", category: "bridal-sets", subCategory: "complete", price: 5999, originalPrice: 7999, metal: "White Gold", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 5.0, reviews: 34, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400", isBestseller: true, discount: 25 },
-    { id: 44, name: "Kundan Bridal Set", category: "bridal-sets", subCategory: "kundan", price: 3499, metal: "Yellow Gold", style: "Traditional", shape: "Round", stoneType: "Kundan", gender: "Women", rating: 4.8, reviews: 56, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", isNew: true },
-    { id: 45, name: "Temple Bridal Set", category: "bridal-sets", subCategory: "temple", price: 2799, metal: "Yellow Gold", style: "Traditional", shape: "None", stoneType: "None", gender: "Women", rating: 4.7, reviews: 45, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400", isBestseller: true },
-    { id: 46, name: "Necklace & Earring Set", category: "bridal-sets", subCategory: "necklace-earring", price: 2499, metal: "Rose Gold", style: "Modern", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.6, reviews: 67, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", isNew: true },
-    { id: 47, name: "Traditional Bridal Set", category: "bridal-sets", subCategory: "traditional", price: 3999, metal: "Yellow Gold", style: "Traditional", shape: "Round", stoneType: "Ruby", gender: "Women", rating: 4.9, reviews: 78, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400", isBestseller: true },
-    { id: 48, name: "Wedding Collection Set", category: "bridal-sets", subCategory: "wedding", price: 4499, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 5.0, reviews: 23, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=400", isNew: true },
+    { id: 43, name: "Complete Bridal Set", category: "bridal-sets", subCategory: "complete", price: 5999, originalPrice: 7999, metal: "White Gold", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 5.0, reviews: 34, image: getProductImage("Complete Bridal Set"), isBestseller: true, discount: 25 },
+    { id: 44, name: "Kundan Bridal Set", category: "bridal-sets", subCategory: "kundan", price: 3499, metal: "Yellow Gold", style: "Traditional", shape: "Round", stoneType: "Kundan", gender: "Women", rating: 4.8, reviews: 56, image: getProductImage("Kundan Bridal Set"), isNew: true },
+    { id: 45, name: "Temple Bridal Set", category: "bridal-sets", subCategory: "temple", price: 2799, metal: "Yellow Gold", style: "Traditional", shape: "None", stoneType: "None", gender: "Women", rating: 4.7, reviews: 45, image: getProductImage("Temple Bridal Set"), isBestseller: true },
+    { id: 46, name: "Necklace & Earring Set", category: "bridal-sets", subCategory: "necklace-earring", price: 2499, metal: "Rose Gold", style: "Modern", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 4.6, reviews: 67, image: getProductImage("Necklace & Earring Set"), isNew: true },
+    { id: 47, name: "Traditional Bridal Set", category: "bridal-sets", subCategory: "traditional", price: 3999, metal: "Yellow Gold", style: "Traditional", shape: "Round", stoneType: "Ruby", gender: "Women", rating: 4.9, reviews: 78, image: getProductImage("Traditional Bridal Set"), isBestseller: true },
+    { id: 48, name: "Wedding Collection Set", category: "bridal-sets", subCategory: "wedding", price: 4499, metal: "Platinum", style: "Classic", shape: "Round", stoneType: "Diamond", gender: "Women", rating: 5.0, reviews: 23, image: getProductImage("Wedding Collection Set"), isNew: true },
   ];
 
   // Filter options
@@ -293,15 +349,15 @@ const Jewelry = () => {
 
   const getHeroBackgroundImage = () => {
     const bgImages = {
-      'rings': "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1600",
-      'necklaces': "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1600",
-      'earrings': "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1600",
-      'bracelets': "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1600",
-      'anklets': "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=1600",
-      'bridal-sets': "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1600",
-      'gems': "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=1600"
+      'rings': "https://placehold.co/1600x400/1a1a2e/d4af37?text=Rings",
+      'necklaces': "https://placehold.co/1600x400/1a1a2e/d4af37?text=Necklaces",
+      'earrings': "https://placehold.co/1600x400/1a1a2e/d4af37?text=Earrings",
+      'bracelets': "https://placehold.co/1600x400/1a1a2e/d4af37?text=Bracelets",
+      'anklets': "https://placehold.co/1600x400/1a1a2e/d4af37?text=Anklets",
+      'bridal-sets': "https://placehold.co/1600x400/1a1a2e/d4af37?text=Bridal+Sets",
+      'gems': "https://placehold.co/1600x400/1a1a2e/d4af37?text=Gemstones"
     };
-    return bgImages[mainCategory] || "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1600";
+    return bgImages[mainCategory] || "https://placehold.co/1600x400/1a1a2e/d4af37?text=Jewelry";
   };
 
   const filteredProducts = getFilteredProducts();

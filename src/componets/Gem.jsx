@@ -85,62 +85,93 @@ const Gem = () => {
     'all': 'Certified Gemstones'
   };
 
+  // Function to get Google image URL - REPLACE THESE WITH YOUR ACTUAL GOOGLE IMAGE LINKS
+  const getGemImage = (gemName) => {
+    // Google Image Placeholders - Replace these URLs with your actual Google image links
+    const imageMap = {
+      'White Diamond': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_1',
+      'Yellow Diamond': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_2',
+      'Pink Diamond': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_3',
+      'Burma Ruby': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_4',
+      'Thai Ruby': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_5',
+      'Colombian Emerald': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_6',
+      'Zambian Emerald': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_7',
+      'Blue Sapphire': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_8',
+      'Yellow Sapphire': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_9',
+      'Pink Sapphire': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_10',
+      'Purple Amethyst': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_11',
+      'Golden Citrine': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_12',
+      'Red Garnet': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_13',
+      'Green Peridot': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_14',
+      'Blue Aquamarine': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_15',
+      'Blue Topaz': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_16',
+      'Pink Tourmaline': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_17',
+      'Blue Tanzanite': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_18',
+      'Pink Morganite': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_19',
+      'White Moonstone': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_20',
+      'White Opal': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_21',
+      'Freshwater Pearl': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_22',
+      'South Sea Pearl': 'https://drive.google.com/uc?export=view&id=YOUR_GOOGLE_DRIVE_ID_23',
+    };
+    return imageMap[gemName] || 'https://placehold.co/400x400/f5f5f5/d4af37?text=Gemstone';
+  };
+
   // Gemstone product database
   const allGems = [
     // Diamonds
-    { id: 1, name: "White Diamond", category: "gems", type: "Diamond", color: "White", clarity: "IF", origin: "South Africa", carat: 1.0, price: 5999, originalPrice: 7999, style: "Brilliant Cut", rating: 5.0, reviews: 67, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: false, isBestseller: true, discount: 25, gemType: "diamonds" },
-    { id: 2, name: "Yellow Diamond", category: "gems", type: "Diamond", color: "Yellow", clarity: "VS", origin: "South Africa", carat: 0.8, price: 4499, originalPrice: 5999, style: "Brilliant Cut", rating: 4.8, reviews: 34, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, discount: 25, gemType: "diamonds" },
-    { id: 3, name: "Pink Diamond", category: "gems", type: "Diamond", color: "Pink", clarity: "VVS", origin: "Australia", carat: 0.5, price: 8999, originalPrice: 11999, style: "Brilliant Cut", rating: 5.0, reviews: 23, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, isBestseller: true, discount: 25, gemType: "diamonds" },
+    { id: 1, name: "White Diamond", category: "gems", type: "Diamond", color: "White", clarity: "IF", origin: "South Africa", carat: 1.0, price: 5999, originalPrice: 7999, style: "Brilliant Cut", rating: 5.0, reviews: 67, image: getGemImage("White Diamond"), isNew: false, isBestseller: true, discount: 25, gemType: "diamonds" },
+    { id: 2, name: "Yellow Diamond", category: "gems", type: "Diamond", color: "Yellow", clarity: "VS", origin: "South Africa", carat: 0.8, price: 4499, originalPrice: 5999, style: "Brilliant Cut", rating: 4.8, reviews: 34, image: getGemImage("Yellow Diamond"), isNew: true, discount: 25, gemType: "diamonds" },
+    { id: 3, name: "Pink Diamond", category: "gems", type: "Diamond", color: "Pink", clarity: "VVS", origin: "Australia", carat: 0.5, price: 8999, originalPrice: 11999, style: "Brilliant Cut", rating: 5.0, reviews: 23, image: getGemImage("Pink Diamond"), isNew: true, isBestseller: true, discount: 25, gemType: "diamonds" },
     
     // Rubies
-    { id: 4, name: "Burma Ruby", category: "gems", type: "Ruby", color: "Red", clarity: "VVS", origin: "Burma", carat: 1.8, price: 1899, originalPrice: 2599, style: "Cabochon", rating: 4.8, reviews: 38, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isBestseller: true, discount: 27, gemType: "rubies" },
-    { id: 5, name: "Thai Ruby", category: "gems", type: "Ruby", color: "Red", clarity: "VS", origin: "Thailand", carat: 2.0, price: 1299, style: "Faceted", rating: 4.6, reviews: 45, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, gemType: "rubies" },
+    { id: 4, name: "Burma Ruby", category: "gems", type: "Ruby", color: "Red", clarity: "VVS", origin: "Burma", carat: 1.8, price: 1899, originalPrice: 2599, style: "Cabochon", rating: 4.8, reviews: 38, image: getGemImage("Burma Ruby"), isBestseller: true, discount: 27, gemType: "rubies" },
+    { id: 5, name: "Thai Ruby", category: "gems", type: "Ruby", color: "Red", clarity: "VS", origin: "Thailand", carat: 2.0, price: 1299, style: "Faceted", rating: 4.6, reviews: 45, image: getGemImage("Thai Ruby"), isNew: true, gemType: "rubies" },
     
     // Emeralds
-    { id: 6, name: "Colombian Emerald", category: "gems", type: "Emerald", color: "Green", clarity: "SI", origin: "Colombia", carat: 3.2, price: 3299, originalPrice: 4499, style: "Faceted", rating: 4.9, reviews: 52, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, discount: 27, gemType: "emeralds" },
-    { id: 7, name: "Zambian Emerald", category: "gems", type: "Emerald", color: "Green", clarity: "VS", origin: "Zambia", carat: 2.5, price: 2499, originalPrice: 3299, style: "Emerald Cut", rating: 4.7, reviews: 34, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isBestseller: true, discount: 24, gemType: "emeralds" },
+    { id: 6, name: "Colombian Emerald", category: "gems", type: "Emerald", color: "Green", clarity: "SI", origin: "Colombia", carat: 3.2, price: 3299, originalPrice: 4499, style: "Faceted", rating: 4.9, reviews: 52, image: getGemImage("Colombian Emerald"), isNew: true, discount: 27, gemType: "emeralds" },
+    { id: 7, name: "Zambian Emerald", category: "gems", type: "Emerald", color: "Green", clarity: "VS", origin: "Zambia", carat: 2.5, price: 2499, originalPrice: 3299, style: "Emerald Cut", rating: 4.7, reviews: 34, image: getGemImage("Zambian Emerald"), isBestseller: true, discount: 24, gemType: "emeralds" },
     
     // Sapphires
-    { id: 8, name: "Blue Sapphire", category: "gems", type: "Sapphire", color: "Blue", clarity: "VS", origin: "Sri Lanka", carat: 2.5, price: 2499, originalPrice: 3499, style: "Faceted", rating: 4.9, reviews: 45, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, isBestseller: true, discount: 28, gemType: "sapphires" },
-    { id: 9, name: "Yellow Sapphire", category: "gems", type: "Sapphire", color: "Yellow", clarity: "VS", origin: "Sri Lanka", carat: 3.0, price: 1599, originalPrice: 2199, style: "Faceted", rating: 4.7, reviews: 29, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, discount: 27, gemType: "sapphires" },
-    { id: 10, name: "Pink Sapphire", category: "gems", type: "Sapphire", color: "Pink", clarity: "VVS", origin: "Madagascar", carat: 1.5, price: 1899, originalPrice: 2499, style: "Faceted", rating: 4.8, reviews: 32, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, discount: 24, gemType: "sapphires" },
+    { id: 8, name: "Blue Sapphire", category: "gems", type: "Sapphire", color: "Blue", clarity: "VS", origin: "Sri Lanka", carat: 2.5, price: 2499, originalPrice: 3499, style: "Faceted", rating: 4.9, reviews: 45, image: getGemImage("Blue Sapphire"), isNew: true, isBestseller: true, discount: 28, gemType: "sapphires" },
+    { id: 9, name: "Yellow Sapphire", category: "gems", type: "Sapphire", color: "Yellow", clarity: "VS", origin: "Sri Lanka", carat: 3.0, price: 1599, originalPrice: 2199, style: "Faceted", rating: 4.7, reviews: 29, image: getGemImage("Yellow Sapphire"), isNew: true, discount: 27, gemType: "sapphires" },
+    { id: 10, name: "Pink Sapphire", category: "gems", type: "Sapphire", color: "Pink", clarity: "VVS", origin: "Madagascar", carat: 1.5, price: 1899, originalPrice: 2499, style: "Faceted", rating: 4.8, reviews: 32, image: getGemImage("Pink Sapphire"), isNew: true, discount: 24, gemType: "sapphires" },
     
     // Amethyst
-    { id: 11, name: "Purple Amethyst", category: "gems", type: "Amethyst", color: "Purple", clarity: "VVS", origin: "Brazil", carat: 4.5, price: 899, originalPrice: 1299, style: "Faceted", rating: 4.6, reviews: 41, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isBestseller: true, discount: 31, gemType: "amethyst" },
+    { id: 11, name: "Purple Amethyst", category: "gems", type: "Amethyst", color: "Purple", clarity: "VVS", origin: "Brazil", carat: 4.5, price: 899, originalPrice: 1299, style: "Faceted", rating: 4.6, reviews: 41, image: getGemImage("Purple Amethyst"), isBestseller: true, discount: 31, gemType: "amethyst" },
     
     // Citrine
-    { id: 12, name: "Golden Citrine", category: "gems", type: "Citrine", color: "Yellow", clarity: "VVS", origin: "Brazil", carat: 4.2, price: 399, style: "Faceted", rating: 4.5, reviews: 39, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isBestseller: true, gemType: "citrine" },
+    { id: 12, name: "Golden Citrine", category: "gems", type: "Citrine", color: "Yellow", clarity: "VVS", origin: "Brazil", carat: 4.2, price: 399, style: "Faceted", rating: 4.5, reviews: 39, image: getGemImage("Golden Citrine"), isBestseller: true, gemType: "citrine" },
     
     // Garnet
-    { id: 13, name: "Red Garnet", category: "gems", type: "Garnet", color: "Red", clarity: "VS", origin: "India", carat: 3.5, price: 499, style: "Cabochon", rating: 4.5, reviews: 48, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isBestseller: true, gemType: "garnet" },
+    { id: 13, name: "Red Garnet", category: "gems", type: "Garnet", color: "Red", clarity: "VS", origin: "India", carat: 3.5, price: 499, style: "Cabochon", rating: 4.5, reviews: 48, image: getGemImage("Red Garnet"), isBestseller: true, gemType: "garnet" },
     
     // Peridot
-    { id: 14, name: "Green Peridot", category: "gems", type: "Peridot", color: "Green", clarity: "VS", origin: "USA", carat: 2.5, price: 449, style: "Faceted", rating: 4.4, reviews: 27, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, gemType: "peridot" },
+    { id: 14, name: "Green Peridot", category: "gems", type: "Peridot", color: "Green", clarity: "VS", origin: "USA", carat: 2.5, price: 449, style: "Faceted", rating: 4.4, reviews: 27, image: getGemImage("Green Peridot"), isNew: true, gemType: "peridot" },
     
     // Aquamarine
-    { id: 15, name: "Blue Aquamarine", category: "gems", type: "Aquamarine", color: "Blue", clarity: "VS", origin: "Brazil", carat: 2.8, price: 1299, originalPrice: 1799, style: "Emerald Cut", rating: 4.7, reviews: 34, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, discount: 28, gemType: "aquamarine" },
+    { id: 15, name: "Blue Aquamarine", category: "gems", type: "Aquamarine", color: "Blue", clarity: "VS", origin: "Brazil", carat: 2.8, price: 1299, originalPrice: 1799, style: "Emerald Cut", rating: 4.7, reviews: 34, image: getGemImage("Blue Aquamarine"), isNew: true, discount: 28, gemType: "aquamarine" },
     
     // Topaz
-    { id: 16, name: "Blue Topaz", category: "gems", type: "Topaz", color: "Blue", clarity: "VS", origin: "Brazil", carat: 5.0, price: 699, style: "Faceted", rating: 4.4, reviews: 56, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, gemType: "topaz" },
+    { id: 16, name: "Blue Topaz", category: "gems", type: "Topaz", color: "Blue", clarity: "VS", origin: "Brazil", carat: 5.0, price: 699, style: "Faceted", rating: 4.4, reviews: 56, image: getGemImage("Blue Topaz"), isNew: true, gemType: "topaz" },
     
     // Tourmaline
-    { id: 17, name: "Pink Tourmaline", category: "gems", type: "Tourmaline", color: "Pink", clarity: "VS", origin: "Afghanistan", carat: 2.0, price: 649, originalPrice: 899, style: "Faceted", rating: 4.6, reviews: 33, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, discount: 28, gemType: "tourmaline" },
+    { id: 17, name: "Pink Tourmaline", category: "gems", type: "Tourmaline", color: "Pink", clarity: "VS", origin: "Afghanistan", carat: 2.0, price: 649, originalPrice: 899, style: "Faceted", rating: 4.6, reviews: 33, image: getGemImage("Pink Tourmaline"), isNew: true, discount: 28, gemType: "tourmaline" },
     
     // Tanzanite
-    { id: 18, name: "Blue Tanzanite", category: "gems", type: "Tanzanite", color: "Blue", clarity: "VVS", origin: "Tanzania", carat: 1.5, price: 1499, originalPrice: 1999, style: "Faceted", rating: 4.8, reviews: 42, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isBestseller: true, discount: 25, gemType: "tanzanite" },
+    { id: 18, name: "Blue Tanzanite", category: "gems", type: "Tanzanite", color: "Blue", clarity: "VVS", origin: "Tanzania", carat: 1.5, price: 1499, originalPrice: 1999, style: "Faceted", rating: 4.8, reviews: 42, image: getGemImage("Blue Tanzanite"), isBestseller: true, discount: 25, gemType: "tanzanite" },
     
     // Morganite
-    { id: 19, name: "Pink Morganite", category: "gems", type: "Morganite", color: "Pink", clarity: "VVS", origin: "Madagascar", carat: 2.2, price: 999, originalPrice: 1399, style: "Faceted", rating: 4.5, reviews: 23, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isBestseller: true, discount: 29, gemType: "morganite" },
+    { id: 19, name: "Pink Morganite", category: "gems", type: "Morganite", color: "Pink", clarity: "VVS", origin: "Madagascar", carat: 2.2, price: 999, originalPrice: 1399, style: "Faceted", rating: 4.5, reviews: 23, image: getGemImage("Pink Morganite"), isBestseller: true, discount: 29, gemType: "morganite" },
     
     // Moonstone
-    { id: 20, name: "White Moonstone", category: "gems", type: "Moonstone", color: "White", clarity: "N/A", origin: "Sri Lanka", carat: 3.8, price: 349, style: "Cabochon", rating: 4.3, reviews: 62, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isBestseller: true, gemType: "moonstone" },
+    { id: 20, name: "White Moonstone", category: "gems", type: "Moonstone", color: "White", clarity: "N/A", origin: "Sri Lanka", carat: 3.8, price: 349, style: "Cabochon", rating: 4.3, reviews: 62, image: getGemImage("White Moonstone"), isBestseller: true, gemType: "moonstone" },
     
     // Opal
-    { id: 21, name: "White Opal", category: "gems", type: "Opal", color: "White", clarity: "N/A", origin: "Australia", carat: 2.0, price: 799, originalPrice: 1099, style: "Cabochon", rating: 4.6, reviews: 31, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, discount: 27, gemType: "opal" },
+    { id: 21, name: "White Opal", category: "gems", type: "Opal", color: "White", clarity: "N/A", origin: "Australia", carat: 2.0, price: 799, originalPrice: 1099, style: "Cabochon", rating: 4.6, reviews: 31, image: getGemImage("White Opal"), isNew: true, discount: 27, gemType: "opal" },
     
     // Pearls
-    { id: 22, name: "Freshwater Pearl", category: "gems", type: "Pearl", color: "White", clarity: "N/A", origin: "China", carat: 8.0, price: 299, style: "Round", rating: 4.4, reviews: 78, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isBestseller: true, gemType: "pearls" },
-    { id: 23, name: "South Sea Pearl", category: "gems", type: "Pearl", color: "White", clarity: "N/A", origin: "Australia", carat: 10.0, price: 899, originalPrice: 1299, style: "Round", rating: 4.9, reviews: 45, image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?w=400", isNew: true, discount: 31, gemType: "pearls" }
+    { id: 22, name: "Freshwater Pearl", category: "gems", type: "Pearl", color: "White", clarity: "N/A", origin: "China", carat: 8.0, price: 299, style: "Round", rating: 4.4, reviews: 78, image: getGemImage("Freshwater Pearl"), isBestseller: true, gemType: "pearls" },
+    { id: 23, name: "South Sea Pearl", category: "gems", type: "Pearl", color: "White", clarity: "N/A", origin: "Australia", carat: 10.0, price: 899, originalPrice: 1299, style: "Round", rating: 4.9, reviews: 45, image: getGemImage("South Sea Pearl"), isNew: true, discount: 31, gemType: "pearls" }
   ];
 
   // Get gems based on current URL
@@ -350,7 +381,7 @@ const Gem = () => {
         {/* Background Image */}
         <div className="absolute inset-0 overflow-hidden">
           <img 
-            src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1600" 
+            src="https://placehold.co/1600x400/1a1a2e/d4af37?text=Gemstones" 
             alt="Gemstone background" 
             className="w-full h-full object-cover opacity-20"
           />
