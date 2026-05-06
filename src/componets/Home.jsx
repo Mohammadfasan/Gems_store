@@ -1,148 +1,313 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import Ring1 from "../assets/Rings/Ring3.jpg";
+import Ring2 from "../assets/Rings/Ring2.jpg";
+import Buy1 from "../assets/Buyer/buy1.jpg";
+import Buy2 from "../assets/Buyer/buy2.jpg";
+import Gem1 from "../assets/Gems/gem1.jpg"
+import Gem2 from "../assets/Gems/gem2.jpg"
+import Gem3 from "../assets/Gems/gem3.jpg"
+import Gem4 from "../assets/Gems/gem4.png"
+import Gem5 from "../assets/Gems/gem5.png"
 
 const Home = () => {
-  // Single background image (Google hosted - luxury jewelry background)
-  const backgroundImage = "https://placehold.co/1920x1080/1a1a2e/d4af37?text=Luxury+Jewelry+Background";
+  // Hero section slideshow with matching images and text
+  const heroSlides = [
+    {
+      id: 1,
+      image: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
+      heading: "Exquisite Diamond",
+      highlight: "Engagement Rings",
+      description: "Discover our stunning collection of diamond engagement rings, crafted to perfection for your special moment.",
+      ctaText: "Shop Rings",
+      ctaLink: "/rings",
+      badge: "LUXURY COLLECTION"
+    },
+    {
+      id: 2,
+      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1920&h=1080&fit=crop",
+      heading: "Handcrafted",
+      highlight: "Gold Jewelry",
+      description: "Explore our exquisite gold jewelry collection, each piece meticulously handcrafted by master artisans.",
+      ctaText: "Explore Gold",
+      ctaLink: "/gold-jewelry",
+      badge: "PURE GOLD"
+    },
+    {
+      id: 3,
+      image: "https://images.pexels.com/photos/1120283/pexels-photo-1120283.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
+      heading: "Finest",
+      highlight: "Ceylon Sapphires",
+      description: "Experience the brilliance of genuine Ceylon sapphires, ethically sourced from Sri Lankan mines.",
+      ctaText: "View Gems",
+      ctaLink: "/gemstones",
+      badge: "CEYLON'S FINEST"
+    },
+    {
+      id: 4,
+      image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1920&h=1080&fit=crop",
+      heading: "Timeless",
+      highlight: "Wedding Bands",
+      description: "Celebrate your eternal love with our elegant wedding bands, designed to last a lifetime.",
+      ctaText: "Shop Wedding",
+      ctaLink: "/wedding-rings",
+      badge: "ETERNAL LOVE"
+    },
+    {
+      id: 5,
+      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1920&h=1080&fit=crop",
+      heading: "Rare & Precious",
+      highlight: "Ruby Collection",
+      description: "Discover the passionate beauty of genuine rubies, each stone telling a unique story of nature's artistry.",
+      ctaText: "Discover Rubies",
+      ctaLink: "/gemstones",
+      badge: "PRECIOUS GEMS"
+    }
+  ];
 
-  // Hero content
-  const heroContent = {
-    heading: "Where Elegance",
-    highlight: "Meets Eternity",
-    description: "Discover our exclusive collection of handcrafted jewelry, designed to celebrate life's most precious moments with unparalleled beauty and craftsmanship.",
-    ctaText: "Shop Rings",
-    ctaLink: "/rings"
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Auto slide every 6 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [currentSlideIndex]);
+
+  const nextSlide = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % heroSlides.length);
+      setIsTransitioning(false);
+    }, 500);
   };
 
-  // Featured Products - Replace these with your Google image URLs
+  const prevSlide = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlideIndex((prevIndex) => (prevIndex - 1 + heroSlides.length) % heroSlides.length);
+      setIsTransitioning(false);
+    }, 500);
+  };
+
+  const goToSlide = (index) => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlideIndex(index);
+      setIsTransitioning(false);
+    }, 500);
+  };
+
+  const currentSlide = heroSlides[currentSlideIndex];
+
+  // Image with fallback component
+  const ImageWithFallback = ({ src, fallback, alt, className, ...props }) => {
+    const [imgSrc, setImgSrc] = useState(src);
+    const [imgError, setImgError] = useState(false);
+
+    return (
+      <img
+        {...props}
+        src={imgError ? fallback : imgSrc}
+        alt={alt}
+        className={className}
+        onError={() => {
+          if (!imgError) {
+            setImgError(true);
+            setImgSrc(fallback);
+          }
+        }}
+        loading="lazy"
+      />
+    );
+  };
+
+  // Featured Products
   const featuredProducts = [
     {
       id: 1,
       name: "GEMLOX RADIANCE",
       price: "LKR 85,000",
-      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+RADIANCE"
+      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop",
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+RADIANCE"
     },
     {
       id: 2,
       name: "GEMLOX EMBER",
       price: "LKR 95,000",
-      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+EMBER"
+      image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500&h=600&fit=crop",
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+EMBER"
     },
     {
       id: 3,
       name: "GEMLOX DAWN",
       price: "LKR 120,000",
-      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+DAWN"
+      image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&h=600&fit=crop",
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+DAWN"
     },
     {
       id: 4,
       name: "GEMLOX IVY",
       price: "LKR 65,000",
-      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+IVY"
+      image: "https://images.unsplash.com/photo-1616683693504-8b2c9f3a2c3e?w=500&h=600&fit=crop",
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+IVY"
     },
     {
       id: 5,
       name: "GEMLOX BLISS",
       price: "LKR 150,000",
-      image: "https://placehold.co/500x600/f5f5f5/d4af37?text=GEMLOX+BLISS"
+      image: "https://images.unsplash.com/photo-1617038260894-0a6fdaaad5e9?w=500&h=600&fit=crop",
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+BLISS"
     }
   ];
 
-  // Gemstones Collection - Replace these with your Google image URLs
+  // Gemstones Collection
   const gemstones = [
     {
       id: 1,
       name: "CEYLON SAPPHIRE",
       price: "LKR 250,000",
-      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Ceylon+Sapphire"
+      image: Gem1,
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=CEYLON+SAPPHIRE"
     },
     {
       id: 2,
       name: "PADPARADSCHA",
       price: "LKR 450,000",
-      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Padparadscha"
+      image: Gem2,
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=PADPARADSCHA"
     },
     {
       id: 3,
       name: "BLUE STAR SAPPHIRE",
       price: "LKR 350,000",
-      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Blue+Star+Sapphire"
+      image: Gem3,
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=BLUE+STAR+SAPPHIRE"
     },
     {
       id: 4,
       name: "CEYLON RUBY",
       price: "LKR 180,000",
-      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Ceylon+Ruby"
+      image: Gem4,
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=CEYLON+RUBY"
     },
     {
       id: 5,
       name: "YELLOW SAPPHIRE",
       price: "LKR 95,000",
-      image: "https://placehold.co/500x500/f5f5f5/d4af37?text=Yellow+Sapphire"
+      image: Gem5,
+      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=YELLOW+SAPPHIRE"
     }
   ];
 
-  // Ring images for Engagement and Wedding sections - Replace with your Google image URLs
-  const ringImages = {
-    engagement: "https://placehold.co/800x600/1a1a2e/d4af37?text=Engagement+Rings",
-    wedding: "https://placehold.co/800x600/1a1a2e/d4af37?text=Wedding+Rings"
-  };
-
-  // Buyer section images - Replace with your Google image URLs
-  const buyerImages = {
-    jewelry: "https://placehold.co/800x600/1a1a2e/d4af37?text=Jewelry+Collection",
-    gems: "https://placehold.co/800x600/1a1a2e/d4af37?text=Gemstones"
-  };
-
   return (
     <>
-      {/* Hero Section with Single Background Image */}
-      <div className="relative w-full h-screen overflow-hidden bg-black">
-        {/* Background Image */}
+      {/* Hero Section with Dynamic Image and Text Slideshow */}
+      <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-gray-900 to-black">
+        {/* Background Images Slideshow */}
         <div className="absolute inset-0">
-          <img 
-            src={backgroundImage}
-            alt="Luxury Jewelry Background"
-            className="w-full h-full object-cover"
-          />
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === currentSlideIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.heading}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.src = "https://placehold.co/1920x1080/1a1a2e/d4af37?text=Gemlox+Luxury+Jewelry";
+                }}
+              />
+              {/* Gradient Overlays for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+            </div>
+          ))}
         </div>
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+        {/* Slideshow Navigation Dots */}
+        <div className="absolute bottom-28 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentSlideIndex
+                  ? 'w-8 h-2 bg-[#d4af37]'
+                  : 'w-2 h-2 bg-white/50 hover:bg-white/80'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
 
-        {/* Hero Content */}
+        {/* Previous Button */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm transition-all duration-300 hover:scale-110"
+          aria-label="Previous slide"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        {/* Next Button */}
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white rounded-full p-2 backdrop-blur-sm transition-all duration-300 hover:scale-110"
+          aria-label="Next slide"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        {/* Dynamic Hero Content - Changes with each slide */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-fade-in-up mb-4">
-            <span className="inline-block px-4 py-1.5 text-xs tracking-wider uppercase bg-white/10 backdrop-blur-sm rounded-full text-[#d4af37] border border-[#d4af37]/30 font-medium">
-              Ceylon's Finest Gemstones Since 1965
-            </span>
+          <div className={`transform transition-all duration-700 ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
+            {/* Badge */}
+            <div className="animate-fade-in-up mb-4">
+              <span className="inline-block px-4 py-1.5 text-xs tracking-wider uppercase bg-white/10 backdrop-blur-sm rounded-full text-[#d4af37] border border-[#d4af37]/30 font-medium">
+                {currentSlide.badge}
+              </span>
+            </div>
+
+            {/* Dynamic Heading */}
+            <h1 className="animate-fade-in-up animation-delay-200 text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-light tracking-wider text-white max-w-5xl mx-auto leading-tight">
+              {currentSlide.heading}
+              <span className="block text-[#d4af37]">{currentSlide.highlight}</span>
+            </h1>
+
+            {/* Dynamic Description */}
+            <p className="animate-fade-in-up animation-delay-400 mt-6 text-base sm:text-lg text-gray-200 max-w-2xl mx-auto font-light leading-relaxed backdrop-blur-sm px-4 py-2 rounded-lg">
+              {currentSlide.description}
+            </p>
+
+            {/* Dynamic CTA Buttons */}
+            <div className="animate-fade-in-up animation-delay-600 mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={currentSlide.ctaLink}
+                className="group relative px-8 py-3.5 overflow-hidden rounded-full bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-black font-semibold text-base transition-all duration-300 hover:shadow-2xl hover:shadow-[#d4af37]/50 hover:scale-105"
+              >
+                <span className="relative z-10">{currentSlide.ctaText}</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-[#e8d5a3] to-[#d4af37] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+              <a
+                href="/collection"
+                className="px-8 py-3.5 rounded-full border-2 border-[#d4af37] text-[#d4af37] font-semibold text-base transition-all duration-300 hover:bg-[#d4af37]/10 hover:scale-105 backdrop-blur-sm"
+              >
+                Explore Collection
+              </a>
+            </div>
           </div>
 
-          <h1 className="animate-fade-in-up animation-delay-200 text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-light tracking-wider text-white max-w-5xl mx-auto leading-tight">
-            {heroContent.heading}
-            <span className="block text-[#d4af37]">{heroContent.highlight}</span>
-          </h1>
-
-          <p className="animate-fade-in-up animation-delay-400 mt-6 text-base sm:text-lg text-gray-200 max-w-2xl mx-auto font-light leading-relaxed">
-            {heroContent.description}
-          </p>
-
-          <div className="animate-fade-in-up animation-delay-600 mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={heroContent.ctaLink}
-              className="group relative px-8 py-3.5 overflow-hidden rounded-full bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-black font-semibold text-base transition-all duration-300 hover:shadow-2xl hover:shadow-[#d4af37]/50 hover:scale-105"
-            >
-              <span className="relative z-10">{heroContent.ctaText}</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-[#e8d5a3] to-[#d4af37] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </a>
-            <a
-              href="/collection"
-              className="px-8 py-3.5 rounded-full border-2 border-[#d4af37] text-[#d4af37] font-semibold text-base transition-all duration-300 hover:bg-[#d4af37]/10 hover:scale-105 backdrop-blur-sm"
-            >
-              Explore Collection
-            </a>
-          </div>
-
+          {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <div className="w-6 h-10 border-2 border-[#d4af37] rounded-full flex justify-center">
               <div className="w-1 h-2 bg-[#d4af37] rounded-full mt-2 animate-scroll" />
@@ -151,10 +316,9 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Featured Products Section - Clean White/Soft Background */}
+      {/* Featured Products Section */}
       <section className="bg-gradient-to-b from-white via-gray-50 to-white py-16 md:py-24">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-800 tracking-wide">
               Featured Products
@@ -165,16 +329,13 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Products Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {featuredProducts.map((product) => (
-              <div
-                key={product.id}
-                className="group cursor-pointer"
-              >
+              <div key={product.id} className="group cursor-pointer">
                 <div className="overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                  <img
+                  <ImageWithFallback
                     src={product.image}
+                    fallback={product.fallback}
                     alt={product.name}
                     className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105"
                   />
@@ -200,8 +361,9 @@ const Home = () => {
             {/* Engagement Rings Card */}
             <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <div className="relative h-80 overflow-hidden">
-                <img 
-                  src={ringImages.engagement}
+                <ImageWithFallback 
+                  src={Ring1}
+                  fallback="https://placehold.co/800x600/1a1a2e/d4af37?text=Engagement+Rings"
                   alt="Engagement Rings Collection" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -238,8 +400,9 @@ const Home = () => {
             {/* Wedding Rings Card */}
             <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
               <div className="relative h-80 overflow-hidden">
-                <img 
-                  src={ringImages.wedding}
+                <ImageWithFallback 
+                  src={Ring2}
+                  fallback="https://placehold.co/800x600/1a1a2e/d4af37?text=Wedding+Rings"
                   alt="Wedding Rings Collection" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -294,14 +457,12 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {gemstones.map((gem) => (
-              <div
-                key={gem.id}
-                className="group cursor-pointer"
-              >
+              <div key={gem.id} className="group cursor-pointer">
                 <div className="relative overflow-hidden bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                   <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
-                    <img
+                    <ImageWithFallback
                       src={gem.image}
+                      fallback={gem.fallback}
                       alt={gem.name}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
@@ -341,7 +502,7 @@ const Home = () => {
       </section>
 
       {/* For Buyers Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-serif font-light text-gray-800 tracking-wide">
@@ -357,8 +518,9 @@ const Home = () => {
             {/* Card 1 - Jewelry Buyers */}
             <div className="group relative overflow-hidden rounded-2xl min-h-[500px] shadow-xl hover:shadow-2xl transition-all duration-500">
               <div className="absolute inset-0">
-                <img 
-                  src={buyerImages.jewelry}
+                <ImageWithFallback 
+                  src={Buy1}
+                  fallback="https://placehold.co/800x600/1a1a2e/d4af37?text=Jewelry+Collection"
                   alt="Jewelry buyers collection"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -403,8 +565,9 @@ const Home = () => {
             {/* Card 2 - Gem Buyers */}
             <div className="group relative overflow-hidden rounded-2xl min-h-[500px] shadow-xl hover:shadow-2xl transition-all duration-500">
               <div className="absolute inset-0">
-                <img 
-                  src={buyerImages.gems}
+                <ImageWithFallback 
+                  src={Buy2}
+                  fallback="https://placehold.co/800x600/1a1a2e/d4af37?text=Gem+Collection"
                   alt="Gem buyers - precious stones"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -523,7 +686,7 @@ const Home = () => {
               <p className="text-gray-400 text-sm mb-4">
                 Subscribe to receive updates on new collections, special offers, and jewelry care tips.
               </p>
-              <form className="flex flex-col gap-3">
+              <form className="flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
                 <input 
                   type="email" 
                   placeholder="Your email address"
