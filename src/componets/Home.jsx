@@ -8,34 +8,44 @@ import Gem2 from "../assets/Gems/gem2.jpg"
 import Gem3 from "../assets/Gems/gem3.jpg"
 import Gem4 from "../assets/Gems/gem4.png"
 import Gem5 from "../assets/Gems/gem5.png"
+// Hero section images
+import Hero1 from "../assets/Hero/hero1.jpg"
+import Hero2 from "../assets/Hero/hero2.jpg"
+import Hero3 from "../assets/Hero/hero3.jpg"
+import Hero4 from "../assets/Hero/hero4.jpg"
+import Hero5 from "../assets/Hero/hero5.jpg"
+import Hero6 from "../assets/Hero/hero6.jpg"
+import Hero7 from "../assets/Hero/hero7.jpg"
+import Hero8 from "../assets/Hero/hero8.jpg"
+import Hero9 from "../assets/Hero/hero9.jpg"
 
 const Home = () => {
-  // Hero section slideshow with matching images and text
+  // Hero section slideshow using ALL 9 local images from Hero folder
   const heroSlides = [
     {
       id: 1,
-      image: "https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
-      heading: "Exquisite Diamond",
-      highlight: "Engagement Rings",
-      description: "Discover our stunning collection of diamond engagement rings, crafted to perfection for your special moment.",
-      ctaText: "Shop Rings",
-      ctaLink: "/rings",
-      badge: "LUXURY COLLECTION"
+      image: Hero1,
+      heading: "Exquisite",
+      highlight: "Luxury Collection",
+      description: "Discover our stunning collection of handcrafted jewelry, each piece tells a unique story of elegance.",
+      ctaText: "Shop Now",
+      ctaLink: "/collection",
+      badge: "NEW ARRIVAL"
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=1920&h=1080&fit=crop",
-      heading: "Handcrafted",
-      highlight: "Gold Jewelry",
-      description: "Explore our exquisite gold jewelry collection, each piece meticulously handcrafted by master artisans.",
-      ctaText: "Explore Gold",
-      ctaLink: "/gold-jewelry",
-      badge: "PURE GOLD"
+      image: Hero2,
+      heading: "Timeless",
+      highlight: "Engagement Rings",
+      description: "Find the perfect symbol of love and commitment with our exquisite collection of engagement rings.",
+      ctaText: "Shop Rings",
+      ctaLink: "/rings",
+      badge: "BESTSELLER"
     },
     {
       id: 3,
-      image: "https://images.pexels.com/photos/1120283/pexels-photo-1120283.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
-      heading: "Finest",
+      image: Hero3,
+      heading: "Rare & Precious",
       highlight: "Ceylon Sapphires",
       description: "Experience the brilliance of genuine Ceylon sapphires, ethically sourced from Sri Lankan mines.",
       ctaText: "View Gems",
@@ -44,34 +54,74 @@ const Home = () => {
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=1920&h=1080&fit=crop",
-      heading: "Timeless",
+      image: Hero4,
+      heading: "Eternal Love",
       highlight: "Wedding Bands",
       description: "Celebrate your eternal love with our elegant wedding bands, designed to last a lifetime.",
       ctaText: "Shop Wedding",
       ctaLink: "/wedding-rings",
-      badge: "ETERNAL LOVE"
+      badge: "ETERNAL BOND"
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=1920&h=1080&fit=crop",
-      heading: "Rare & Precious",
-      highlight: "Ruby Collection",
-      description: "Discover the passionate beauty of genuine rubies, each stone telling a unique story of nature's artistry.",
-      ctaText: "Discover Rubies",
-      ctaLink: "/gemstones",
-      badge: "PRECIOUS GEMS"
+      image: Hero5,
+      heading: "Magical",
+      highlight: "Gemstone Jewelry",
+      description: "Adorn yourself with our magnificent gemstone jewelry, perfect for every occasion.",
+      ctaText: "Explore",
+      ctaLink: "/jewelry-collection",
+      badge: "HANDCRAFTED"
+    },
+    {
+      id: 6,
+      image: Hero6,
+      heading: "Pure Elegance",
+      highlight: "Gold Collection",
+      description: "Discover our exquisite gold jewelry collection, each piece meticulously handcrafted by master artisans.",
+      ctaText: "Shop Gold",
+      ctaLink: "/gold-jewelry",
+      badge: "PURE GOLD"
+    },
+    {
+      id: 7,
+      image: Hero7,
+      heading: "Brilliant",
+      highlight: "Diamond Jewelry",
+      description: "Shine bright with our stunning diamond collection, crafted to perfection.",
+      ctaText: "View Diamonds",
+      ctaLink: "/diamonds",
+      badge: "LUXURY"
+    },
+    {
+      id: 8,
+      image: Hero8,
+      heading: "Royal",
+      highlight: "Heritage Collection",
+      description: "Explore our heritage collection inspired by Sri Lankan royal craftsmanship.",
+      ctaText: "Discover",
+      ctaLink: "/heritage",
+      badge: "HERITAGE"
+    },
+    {
+      id: 9,
+      image: Hero9,
+      heading: "Custom",
+      highlight: "Bespoke Jewelry",
+      description: "Create your own unique piece with our bespoke jewelry design service.",
+      ctaText: "Design Yours",
+      ctaLink: "/custom",
+      badge: "BESPOKE"
     }
   ];
 
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Auto slide every 6 seconds
+  // Auto slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 6000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [currentSlideIndex]);
@@ -131,82 +181,82 @@ const Home = () => {
       name: "GEMLOX RADIANCE",
       price: "LKR 85,000",
       image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500&h=600&fit=crop",
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+RADIANCE"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=GEMLOX+RADIANCE"
     },
     {
       id: 2,
       name: "GEMLOX EMBER",
       price: "LKR 95,000",
       image: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500&h=600&fit=crop",
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+EMBER"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=GEMLOX+EMBER"
     },
     {
       id: 3,
       name: "GEMLOX DAWN",
       price: "LKR 120,000",
       image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&h=600&fit=crop",
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+DAWN"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=GEMLOX+DAWN"
     },
     {
       id: 4,
       name: "GEMLOX IVY",
       price: "LKR 65,000",
       image: "https://images.unsplash.com/photo-1616683693504-8b2c9f3a2c3e?w=500&h=600&fit=crop",
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+IVY"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=GEMLOX+IVY"
     },
     {
       id: 5,
       name: "GEMLOX BLISS",
       price: "LKR 150,000",
       image: "https://images.unsplash.com/photo-1617038260894-0a6fdaaad5e9?w=500&h=600&fit=crop",
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=GEMLOX+BLISS"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=GEMLOX+BLISS"
     }
   ];
 
-  // Gemstones Collection
+  // Gemstones Collection using imported images
   const gemstones = [
     {
       id: 1,
       name: "CEYLON SAPPHIRE",
       price: "LKR 250,000",
       image: Gem1,
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=CEYLON+SAPPHIRE"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=CEYLON+SAPPHIRE"
     },
     {
       id: 2,
       name: "PADPARADSCHA",
       price: "LKR 450,000",
       image: Gem2,
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=PADPARADSCHA"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=PADPARADSCHA"
     },
     {
       id: 3,
       name: "BLUE STAR SAPPHIRE",
       price: "LKR 350,000",
       image: Gem3,
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=BLUE+STAR+SAPPHIRE"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=BLUE+STAR+SAPPHIRE"
     },
     {
       id: 4,
       name: "CEYLON RUBY",
       price: "LKR 180,000",
       image: Gem4,
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=CEYLON+RUBY"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=CEYLON+RUBY"
     },
     {
       id: 5,
       name: "YELLOW SAPPHIRE",
       price: "LKR 95,000",
       image: Gem5,
-      fallback: "https://placehold.co/500x500/1a1a2e/d4af37?text=YELLOW+SAPPHIRE"
+      fallback: "https://placehold.co/500x500/f5f5f5/d4af37?text=YELLOW+SAPPHIRE"
     }
   ];
 
   return (
     <>
-      {/* Hero Section with Dynamic Image and Text Slideshow */}
+      {/* Hero Section with 9 Local Images Slideshow */}
       <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-gray-900 to-black">
-        {/* Background Images Slideshow */}
+        {/* Background Images Slideshow - Using all 9 Hero images */}
         <div className="absolute inset-0">
           {heroSlides.map((slide, index) => (
             <div
@@ -223,15 +273,15 @@ const Home = () => {
                   e.target.src = "https://placehold.co/1920x1080/1a1a2e/d4af37?text=Gemlox+Luxury+Jewelry";
                 }}
               />
-              {/* Gradient Overlays for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/30" />
+              {/* Gradient Overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
             </div>
           ))}
         </div>
 
         {/* Slideshow Navigation Dots */}
-        <div className="absolute bottom-28 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
+        <div className="absolute bottom-28 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
           {heroSlides.map((_, index) => (
             <button
               key={index}
@@ -363,7 +413,7 @@ const Home = () => {
               <div className="relative h-80 overflow-hidden">
                 <ImageWithFallback 
                   src={Ring1}
-                  fallback="https://placehold.co/800x600/1a1a2e/d4af37?text=Engagement+Rings"
+                  fallback="https://placehold.co/800x600/f5f5f5/d4af37?text=Engagement+Rings"
                   alt="Engagement Rings Collection" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -402,7 +452,7 @@ const Home = () => {
               <div className="relative h-80 overflow-hidden">
                 <ImageWithFallback 
                   src={Ring2}
-                  fallback="https://placehold.co/800x600/1a1a2e/d4af37?text=Wedding+Rings"
+                  fallback="https://placehold.co/800x600/f5f5f5/d4af37?text=Wedding+Rings"
                   alt="Wedding Rings Collection" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -520,7 +570,7 @@ const Home = () => {
               <div className="absolute inset-0">
                 <ImageWithFallback 
                   src={Buy1}
-                  fallback="https://placehold.co/800x600/1a1a2e/d4af37?text=Jewelry+Collection"
+                  fallback="https://placehold.co/800x600/f5f5f5/d4af37?text=Jewelry+Collection"
                   alt="Jewelry buyers collection"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -567,7 +617,7 @@ const Home = () => {
               <div className="absolute inset-0">
                 <ImageWithFallback 
                   src={Buy2}
-                  fallback="https://placehold.co/800x600/1a1a2e/d4af37?text=Gem+Collection"
+                  fallback="https://placehold.co/800x600/f5f5f5/d4af37?text=Gem+Collection"
                   alt="Gem buyers - precious stones"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
