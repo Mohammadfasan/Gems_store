@@ -174,7 +174,7 @@ const Home = () => {
     );
   };
 
-  // Featured Products
+  // Featured Products - FIXED image URLs (changed unplash to unsplash)
   const featuredProducts = [
     {
       id: 1,
@@ -436,7 +436,7 @@ const Home = () => {
                   Find the perfect symbol of love and commitment with our exquisite collection of engagement rings. Choose from timeless designs crafted with precision to celebrate your unique journey.
                 </p>
                 <a 
-                  href="/engagement-rings" 
+                  href="/rings/engagement" 
                   className="inline-flex items-center gap-2 px-8 py-3 border-2 border-[#d4af37] text-[#b8860b] font-medium rounded-full hover:bg-[#d4af37] hover:text-white transition-all duration-300 group-hover:shadow-lg"
                 >
                   SHOP ENGAGEMENT RINGS
@@ -475,7 +475,7 @@ const Home = () => {
                   Seal your love with a beautifully crafted wedding ring that represents your everlasting bond. Explore our selection of elegant bands designed to mark the beginning of a lifetime together.
                 </p>
                 <a 
-                  href="/wedding-rings" 
+                  href="/rings/wedding" 
                   className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-white font-medium rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105"
                 >
                   SHOP WEDDING RINGS
@@ -539,7 +539,7 @@ const Home = () => {
 
           <div className="text-center mt-12">
             <a 
-              href="/gemstones" 
+              href="/gems" 
               className="inline-flex items-center gap-2 px-8 py-3 border-2 border-[#d4af37] text-[#b8860b] font-medium rounded-full hover:bg-[#d4af37] hover:text-white transition-all duration-300 hover:shadow-lg"
             >
               View All Gemstones
@@ -648,7 +648,7 @@ const Home = () => {
                   </li>
                 </ul>
                 <a 
-                  href="/gem-collection" 
+                  href="/gems" 
                   className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#d4af37] to-[#b8860b] text-black font-medium rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105"
                 >
                   Source Gems
@@ -709,11 +709,11 @@ const Home = () => {
               <h3 className="text-lg font-serif font-light mb-5 tracking-wide">Quick Links</h3>
               <ul className="space-y-3">
                 <li><a href="/rings" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300 text-sm">Engagement Rings</a></li>
-                <li><a href="/wedding-rings" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300 text-sm">Wedding Rings</a></li>
+                <li><a href="/rings/wedding" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300 text-sm">Wedding Rings</a></li>
                 <li><a href="/necklaces" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300 text-sm">Necklaces</a></li>
                 <li><a href="/earrings" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300 text-sm">Earrings</a></li>
                 <li><a href="/bracelets" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300 text-sm">Bracelets</a></li>
-                <li><a href="/gemstones" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300 text-sm">Gemstones</a></li>
+                <li><a href="/gems" className="text-gray-400 hover:text-[#d4af37] transition-colors duration-300 text-sm">Gemstones</a></li>
               </ul>
             </div>
 

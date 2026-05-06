@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from "../src/componets/Navbar";
-import Home from "../src/componets/Home";
-import Jewelry from "../src/componets/Jewelary";
-import Gem from "../src/componets/Gem";
+import Navbar from "./componets/Navbar";
+import Home from "./componets/Home";
+import Jewelry from "./componets/Jewelary";
+import Gem from "./componets/Gem";
 import Profile from './componets/Profile';
 import News from './componets/News';
 import Location from "./componets/Location"
@@ -16,7 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           
-          {/* Rings Routes - All show rings */}
+          {/* Rings Routes */}
           <Route path="/rings" element={<Jewelry />} />
           <Route path="/rings/engagement" element={<Jewelry />} />
           <Route path="/rings/wedding" element={<Jewelry />} />
@@ -70,7 +70,7 @@ const App = () => {
           <Route path="/bridal-sets/traditional" element={<Jewelry />} />
           <Route path="/bridal-sets/kundan" element={<Jewelry />} />
           
-          {/* Gems Routes - NOW USING Gem COMPONENT */}
+          {/* Gems Routes */}
           <Route path="/gems" element={<Gem />} />
           <Route path="/gems/precious" element={<Gem />} />
           <Route path="/gems/semi-precious" element={<Gem />} />
@@ -92,28 +92,22 @@ const App = () => {
           <Route path="/gems/tanzanite" element={<Gem />} />
           <Route path="/gems/morganite" element={<Gem />} />
           <Route path="/gems/moonstone" element={<Gem />} />
-          <Route path="/gems/sunstone" element={<Gem />} />
-          <Route path="/gems/labradorite" element={<Gem />} />
           <Route path="/gems/opal" element={<Gem />} />
-          <Route path="/gems/spinel" element={<Gem />} />
-          <Route path="/gems/zircon" element={<Gem />} />
-          <Route path="/gems/aventurine" element={<Gem />} />
           <Route path="/gems/pearls" element={<Gem />} />
-          <Route path="/gems/amber" element={<Gem />} />
-          <Route path="/gems/coral" element={<Gem />} />
-          <Route path="/gems/jet" element={<Gem />} />
-          <Route path="/gems/ivory" element={<Gem />} />
-          <Route path="/gems/mother-of-pearl" element={<Gem />} />
           
-          {/* Profile Route */}
+          {/* Profile Routes */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/my-profile" element={<Profile />} />
+          <Route path="/orders" element={<Profile />} />
+          <Route path="/saved-items" element={<Profile />} />
+          <Route path="/wishlist" element={<Profile />} />
           
           {/* Other Routes */}
-        
+          <Route path="/news" element={<News />} />
+          {/* FIXED: lowercase 'l' to match Navbar link */}
+          <Route path="/location" element={<Location />} />
           <Route path="/shop" element={<Jewelry />} />
           <Route path="/search" element={<Home />} />
-          <Route path="/wishlist" element={<Profile />} />
           <Route path="/cart" element={<Home />} />
           <Route path="/new-arrivals" element={<Jewelry />} />
           <Route path="/bestsellers" element={<Jewelry />} />
@@ -124,12 +118,10 @@ const App = () => {
           <Route path="/certified-gemstones" element={<Jewelry />} />
           <Route path="/gemstone-jewelry" element={<Jewelry />} />
           <Route path="/loose-gemstones" element={<Gem />} />
-          <Route path="/orders" element={<Profile />} />
-          <Route path="/saved-items" element={<Profile />} />
           <Route path="/seller-dashboard" element={<Home />} />
-
-          <Route path="/news" element={<News />} />
-          <Route path="/Location" element={<Location />} />
+          
+          {/* Catch-all redirect for 404 - FIXED 404 error */}
+          <Route path="*" element={<Home />} />
         </Routes>
       </div>
     </Router>
